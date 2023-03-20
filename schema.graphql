@@ -1,0 +1,25 @@
+type Listing @entity {
+  id: ID!
+  mint: Bytes!
+  seller: Bytes!
+  destination: Bytes!
+  buyer: Bytes
+  status: String!
+  quantity: BigInt!
+  price: BigInt!
+  soldAt: BigInt
+  createdAt: BigInt!
+  updatedAt: BigInt!
+}
+
+type Offer @entity {
+  id: ID!
+  mint: Bytes!
+  price: BigInt!
+  buyer: Bytes!
+  seller: Bytes
+  status: String!
+  acceptedAt: BigInt
+  createdAt: BigInt!
+  updatedAt: BigInt!
+}

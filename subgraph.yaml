@@ -1,0 +1,36 @@
+specVersion: 0.0.2
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: solana/program
+    name: Comptoir
+    source:
+      address: 'comp8FLpN5bbNUC2fhnkFtM7T16DWvaHs8N5dcaoZWP'
+      idl: Comptoir
+      startSignature: '2HgBgeaMYrKKCXGNp57FMZP8EXbc7vZeR4LAuxvesFsjSs9nTS9WPcvoMJcPWczyMQS8w1etDZr1UkE3WLsdbPDa'
+    mapping:
+      kind: solana/events
+      apiVersion: 0.0.5
+      language: wasm/assemblyscript
+      entities:
+        - Comptoir
+      idls:
+        - name: Comptoir
+          file: ./idls/comptoir.json
+      callHandlers:
+        - function: createSellOrder
+          handler: handleCreateSellOrderCall
+        - function: removeSellOrder
+          handler: handleRemoveSellOrderCall
+        - function: addQuantityToSellOrder
+          handler: handleAddQuantityToSellOrderCall
+        - function: createBuyOffer
+          handler: handleCreateBuyOfferCall
+        - function: removeBuyOffer
+          handler: handleRemoveBuyOfferCall
+        - function: executeOffer
+          handler: handleExecuteOfferCall
+      eventHandlers:
+        - event: BoughtSellOrderEvent
+          handler: handleBoughtSellOrderEvent
+      file: ./src/mapping.ts
