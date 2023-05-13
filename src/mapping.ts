@@ -53,11 +53,10 @@ export function handleRemoveSellOrderCall(call: RemoveSellOrderCall): void {
     log.warning('remove listing: listing {} not found', [id.toBase58()]);
   } else {
     log.debug('remove listing {}', [id.toBase58()]);
-    let quantityToUnlist = args.quantityToUnlist;
-    if (quantityToUnlist.equals(listing.quantity)) {
+    listing.quantity = listing.quantity.minus(args.quantityToUnlist);
+    if (listing.quantity.isZero()) {
       listing.status = 'Unlisted';
     }
-    listing.quantity = listing.quantity.minus(quantityToUnlist);
     listing.updatedAt = BigInt.fromU32(call.blockTime);
     listing.save();
   }

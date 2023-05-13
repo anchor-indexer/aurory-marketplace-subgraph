@@ -3,19 +3,19 @@ schema:
   file: ./schema.graphql
 dataSources:
   - kind: solana/program
-    name: Comptoir
+    name: comptoir
     source:
       address: 'comp8FLpN5bbNUC2fhnkFtM7T16DWvaHs8N5dcaoZWP'
-      idl: Comptoir
+      idl: comptoir
       startSignature: '2HgBgeaMYrKKCXGNp57FMZP8EXbc7vZeR4LAuxvesFsjSs9nTS9WPcvoMJcPWczyMQS8w1etDZr1UkE3WLsdbPDa'
     mapping:
       kind: solana/events
       apiVersion: 0.0.5
       language: wasm/assemblyscript
       entities:
-        - Comptoir
+        - comptoir
       idls:
-        - name: Comptoir
+        - name: comptoir
           file: ./idls/comptoir.json
       callHandlers:
         - function: createSellOrder
